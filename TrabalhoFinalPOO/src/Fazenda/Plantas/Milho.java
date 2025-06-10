@@ -20,10 +20,10 @@ import Fazenda.Produto;
 public class Milho extends Planta implements Ativo {
 
     /**
-     * Construtor padrão da Trigo. Define o item produzido e nome.
+     * Construtor padrão do Milho. Define o item produzido e nome.
      */
     public Milho() {
-        super(false, false, new sementeMilho(), "Milho");
+        super(false, false, new sementeMilho(), "Milho", 5);
     }
 
     /**
@@ -34,9 +34,7 @@ public class Milho extends Planta implements Ativo {
      * @param LotesDisponiveis controle de lotes disponíveis
      */
     public void coletar(Inventario inventario, Lotes LotesDisponiveis) {
-        for (int i = 0; i < 5; i++) {
-            inventario.adicionar(this.getItemProduzido());
-        }
+            inventario.adicionar(this.getItemProduzido(), getQuantidadeProducao());
         LotesDisponiveis.setQuantidadeDisponivel(LotesDisponiveis.getQuantidadeDisponivel() + 1);
     }
 
@@ -46,7 +44,7 @@ public class Milho extends Planta implements Ativo {
     public void comprar(Dinheiro dinheiro, Inventario inventario) {
         if (dinheiro.getValor() >= this.getItemProduzido().getPreco()) {
             dinheiro.setValor(dinheiro.getValor() - this.getItemProduzido().getPreco());
-            inventario.adicionar(this.getItemProduzido());
+            inventario.adicionar(this.getItemProduzido(), 1);
         } else {
             System.out.println("Dinheiro insuficiente, trabalhe mais... ou venda um rim!");
         }
@@ -57,6 +55,6 @@ public class Milho extends Planta implements Ativo {
      */
     public void vender(Dinheiro dinheiro, Inventario inventario) {
         dinheiro.setValor(dinheiro.getValor() + this.getItemProduzido().getPreco());
-        inventario.remover(this.getItemProduzido());
+        inventario.remover(this.getItemProduzido(), 1);
     }
 }

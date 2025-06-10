@@ -21,6 +21,7 @@ public abstract class Animal {
     private boolean fome;
     private int vida;
     private String nome;
+    private int QuantidadeProducao, quantoCome;
 
     /**
      * Construtor da classe Animal.
@@ -32,13 +33,15 @@ public abstract class Animal {
      * @param vida quantidade de vida do animal
      * @param comida o {@link Item} necessário para alimentar o animal
      */
-    public Animal(String nome, double preco, Item itemProduzido, boolean fome, int vida, Item comida){
+    public Animal(String nome, double preco, Item itemProduzido, boolean fome, int vida, Item comida, int QuantidadeProducao, int quantoCome){
         this.nome = nome;
         this.preco = preco;
         this.itemProduzido = itemProduzido;
         this.fome = fome;
         this.vida = vida;
         this.comida = comida;
+        this.QuantidadeProducao = QuantidadeProducao;
+        this.quantoCome = quantoCome;
     }
 
     /**
@@ -59,6 +62,50 @@ public abstract class Animal {
         return nome;
     }
 
+    public double getPreco() {
+        return preco;
+    }
+
+    public boolean isFome() {
+        return fome;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public int getQuantoCome() {
+        return quantoCome;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public void setItemProduzido(Item itemProduzido) {
+        this.itemProduzido = itemProduzido;
+    }
+
+    public void setComida(Item comida) {
+        this.comida = comida;
+    }
+
+    public void setFome(boolean fome) {
+        this.fome = fome;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setQuantoCome(int quantoCome) {
+        this.quantoCome = quantoCome;
+    }
+
     /**
      * Retorna o item que este animal produz.
      *
@@ -77,7 +124,7 @@ public abstract class Animal {
         if (inventario.contem(this.getComida())) {
             if (fome) {
                 fome = false;
-                inventario.remover(this.getComida());
+                inventario.remover(this.getComida(), quantoCome);
                 System.out.println(nome + " foi alimentado.");
             } else {
                 System.out.println(nome + " não está com fome.");
@@ -85,5 +132,13 @@ public abstract class Animal {
         } else {
             System.out.println("Comida de " + nome + " não encontrada no inventário.");
         }
+    }
+
+    public int getQuantidadeProducao() {
+        return QuantidadeProducao;
+    }
+
+    public void setQuantidadeProducao(int quantidadeProducao) {
+        QuantidadeProducao = quantidadeProducao;
     }
 }

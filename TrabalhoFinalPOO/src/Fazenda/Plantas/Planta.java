@@ -22,6 +22,7 @@ public abstract class Planta {
     private boolean sede, estado;
     private Item itemProduzido;
     private String nome;
+    private int QuantidadeProducao;
 
     /**
      * Construtor da classe Planta.
@@ -31,11 +32,12 @@ public abstract class Planta {
      * @param itemProduzido o {@link Item} que será produzido por essa planta
      * @param nome o nome da planta
      */
-    public Planta(boolean estado, boolean sede, Item itemProduzido, String nome) {
+    public Planta(boolean estado, boolean sede, Item itemProduzido, String nome, int QuantidadeProducao) {
         this.itemProduzido = itemProduzido;
         this.sede = false;
         this.estado = false;
         this.nome = nome;
+        this.QuantidadeProducao = QuantidadeProducao;
     }
 
     /**
@@ -67,9 +69,17 @@ public abstract class Planta {
     public void Plantar(Lotes LotesDisponiveis, Inventario inventario) {
         if (LotesDisponiveis.getQuantidadeDisponivel() > 0) {
             LotesDisponiveis.setQuantidadeDisponivel(LotesDisponiveis.getQuantidadeDisponivel() - 1);
-            inventario.remover(this.itemProduzido);
+            inventario.remover(this.itemProduzido, 1);
         } else {
             System.out.println("Não há lotes disponíveis");
         }
+    }
+
+    public int getQuantidadeProducao() {
+        return QuantidadeProducao;
+    }
+
+    public void setQuantidadeProducao(int quantidadeProducao) {
+        QuantidadeProducao = quantidadeProducao;
     }
 }
