@@ -1,5 +1,9 @@
 package Fazenda;
 import Fazenda.Itens.Item;
+import Fazenda.Itens.sementeSoja;
+import Fazenda.Plantas.Milho;
+import Fazenda.Plantas.Planta;
+import Fazenda.Plantas.Soja;
 import Fazenda.Produto;
 import Fazenda.Lotes;
 import Fazenda.Inventario;
@@ -12,21 +16,23 @@ import java.util.*;
 public class AppFazenda {
     public static void main(String[] args) {
         Inventario inventario = new Inventario();
-        int valorRandomico, dias;
+        Lotes lotes = new Lotes();
+        EventosDiarios eventosDiarios = new EventosDiarios();
         Scanner scanner = new Scanner(System.in);
-        Random rand = new Random();
-        EventoRandomico evento = new EventoRandomico();
-        Dinheiro dinheiro = new Dinheiro();
+        int escolha;
 
-        System.out.println("Bem vindo à fazenda BUSiness Farm!"
-                + "Por quantos dias você gostaria de ser nosso fazendeiro? ");
-        // inserir aqui um try/catch para garantir que a entrada seja de fato um int
-        dias = scanner.nextInt();
+        do{
+            eventosDiarios.exibir();
+            System.out.println("Digite o que você quer fazer:");
+            System.out.println("1 - ");
+            System.out.println("2 - ");
+            System.out.println("3 - ");
+            System.out.println("4 - ");
+            System.out.println("5 - ");
+            System.out.println("6 - ");
+            System.out.println("7 - ");
+            escolha = scanner.nextInt();
 
-        for (int i = 0; i < dias; i++){
-            // inserir aqui os processos padrões de cada dia
-            valorRandomico = rand.nextInt(10);
-            evento.executarEvento(valorRandomico, i, dinheiro);
         }
 
     }

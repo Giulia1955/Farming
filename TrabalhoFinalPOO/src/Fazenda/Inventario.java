@@ -6,42 +6,53 @@ import java.util.*;
 
 public class Inventario {
 
-    private Map<Item, Integer> Itens;
+    private Map<Item, Integer> itens;
 
     public Inventario() {
-        Itens = new HashMap<>();
+        itens = new HashMap<>();
     }
 
-    public void adicionar(Item item, int quantidade) {
-        if (Itens.containsKey(item)) {
-            int novaQuantidade = Itens.get(item) + quantidade;
-            Itens.put(item, novaQuantidade);
+    public Map<Item, Integer> getItens() {
+        return itens;
+    }
+
+    public void setItens(Map<Item, Integer> itens) {
+        this.itens = itens;
+    }
+
+    public void adicionar(Item item, int qtd) {
+        if (itens.containsKey(item)) {
+            int novaQtd = itens.get(item) + qtd;
+            itens.put(item, novaQtd);
         } else {
-            Itens.put(item, quantidade);
+            itens.put(item, qtd);
         }
     }
 
-    public boolean remover(Item item, int quantidade) {
-        int atual = Itens.get(item);
-
-        if (!Itens.containsKey(item) || (atual < quantidade)) {
+    public boolean remover(Item item, int qtd) {
+        if(!contem(item)){
+            System.out.println("Item não existe no inventario.");
             return false;
         }
-        if (atual == quantidade) {
-            Itens.remove(item);
-        } else {
-            Itens.put(item, atual - quantidade);
+        int atual = itens.get(item);
+        if(atual == qtd){
+            itens.remove(item);
+        }else{
+            itens.put(item, atual - 1);
         }
         return true;
     }
 
     public boolean contem(Item item) {
-        return Itens.containsKey(item);
+        return itens.containsKey(item);
     }
 
+    public int quantidadeDisponivel(Item item){
+        return(itens.get(item));
+    }
 
-    public void imprimirInventario() {
-        for (Map.Entry<Item, Integer> entry : Itens.entrySet()) {
+    public void imprimirInventario () {
+        for (Map.Entry<Item, Integer> entry : itens.entrySet()) {
             System.out.println(entry.getKey().getNome() + ": " + entry.getValue());
         }
     }

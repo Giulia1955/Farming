@@ -1,63 +1,79 @@
 package Fazenda.Animais;
-import Fazenda.Inventario;
+import Fazenda.*;
 import Fazenda.Itens.Item;
-import Fazenda.Dinheiro;
-import Fazenda.Ativo;
 import Fazenda.Itens.La;
+import Fazenda.Itens.filhoteOvelha;
 import Fazenda.Itens.sementeTrigo;
-import Fazenda.Lotes;
 
-/**
- * Representa uma Ovelha, que é um tipo de {@link Animal}.
- * @author Guilherme
- */
+import java.util.ArrayList;
+
 public class Ovelha extends Animal implements Ativo{
-    /**
-     * Classe para inicializar a classe ovelha
-     * @param nome é o nome de cada ovelha
-     * @param preco é o valor em dinheiro de cada ovelha
-     * @param itemProduzido indica o item {@link Item} que a ovelha vai produzir
-     * @param fome diz se a ovelha precisa ou não ser alimentada
-     * @param comida mostra que tipo de comida {@link Item} a ovelha come
-     */
     public Ovelha() {
-        super("Ovelha", 35, new La(), false, 15, new sementeTrigo(), 2, 5);
-    }
-    @Override
-    public Item getComida() {
-        return super.getComida();
+        super("Ovelha", new La(), false, 15, new sementeTrigo(), 2, 5, 5, new filhoteOvelha());
     }
 
-    @Override
-    public String getNome() {
-        return super.getNome();
+    public TipoLote getTipo(){
+        return TipoLote.OVELHA;
     }
 
-    @Override
-    public Item getItemProduzido() {
-        return super.getItemProduzido();
-    }
-
-    @Override
-    public void alimentar(Inventario inventario) {
-        super.alimentar(inventario);
+    public boolean prontoParaColeta() {
+        return this.getDiasParaProduzir() <= 0;
     }
 
     public void coletar(Inventario inventario, Lotes lotes) {
-        inventario.adicionar(this.getItemProduzido(), 2);
-    }
-
-    public void comprar(Dinheiro dinheiro, Inventario inventario){
-        if (dinheiro.getValor() >= this.getItemProduzido().getPreco()) {
-            dinheiro.setValor(dinheiro.getValor() - this.getItemProduzido().getPreco());
-            inventario.adicionar(this.getItemProduzido(), 1);
-        } else {
-            System.out.println("Dinheiro insuficiente, trabalhe mais... ou venda um rim!");
+        if (!lotes.temDisponivel(this.getTipo())) {
+            System.out.println("Não há " + this.getNome() + " na fazenda");
+            return;
         }
+
+        int index = this.getTipo().ordinal();
+        ArrayList<Ativo> lista = lotes.getLotes()[index];
+
+        for (int i = 0; i < lista.size(); i++) {
+            Ativo ativo = lista.get(i);
+            if (ativo instanceof Ovelha ovelha && ovelha.prontoParaColeta()) {
+                inventario.adicionar(ovelha.getItemProduzido(), ovelha.getQuantidadeProducao());
+                ovelha.setDiasParaProduzir(this.getDiasParaProduzir());
+                System.out.println(ovelha.getItemProduzido().getNome() + " coletado com sucesso!");
+                return;
+            }
+        }
+        System.out.println("Nenhum(a) " + this.getNome() + " pronto para coleta");
     }
 
-    public void vender(Dinheiro dinheiro, Inventario inventario) {
-        dinheiro.setValor(dinheiro.getValor() + this.getItemProduzido().getPreco());
-        inventario.remover(this.getItemProduzido(), 1);
+    public void alimentar(Inventario inventario, Lotes lotes) {
+        if(!inventario.contem(this.getComida())){
+            System.out.println("Não há comida para " + this.getNome() + " no inventario.");
+            return;
+        }
+
+        int index = this.getTipo().ordinal();
+        ArrayList<Ativo> lista = lotes.getLotes()[index];
+
+        for (int i = 0; i < lista.size(); i++) {
+            Ativo ativo = lista.get(i);
+            if (ativo instanceof Ovelha ovelha && ovelha.isFome()) {
+                if((inventario.remover(ovelha.getItemProduzido(), 1))){
+                    ovelha.setFome(false);
+                    System.out.println(this.getNome() + " alimentado(a) com sucesso.");
+                    return;
+                }
+            }
+        }
+
+        System.out.println("Nenhum(a) " + this.getNome() + " com fome.");
+    }
+
+    public void colocar(Inventario inventario, Lotes lotes) {
+        if(lotes.estaCheio()){
+            System.out.println("Não há lotes disponíveis.");
+            return;
+        }
+        if(inventario.remover(this.getFilhote(), 1)){
+            Ativo ativo = new Ovelha();
+            lotes.adicionar(ativo);
+            System.out.println(this.getFilhote().getNome() + " colocado com sucesso, agora ele ja pode produzir!");
+        }
+
     }
 }

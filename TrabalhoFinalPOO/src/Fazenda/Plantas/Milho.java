@@ -1,60 +1,54 @@
 package Fazenda.Plantas;
 
-import Fazenda.Ativo;
+import Fazenda.*;
 import Fazenda.Itens.sementeMilho;
-import Fazenda.Inventario;
-import Fazenda.Dinheiro;
-import Fazenda.Lotes;
-import Fazenda.Produto;
 
-/**
- * A classe {@code Milho} representa uma planta cultivável na fazenda.
- * Possui funcionalidades de coleta, compra e venda, integrando com o inventário e o sistema financeiro.
- * implementando os métodos do {@link Ativo} e {@link Produto}
- *
- * Produz sementes de milho como item associado.
- *
- * @author SeuNome
- * @version 1.0
- */
+import java.util.ArrayList;
+
 public class Milho extends Planta implements Ativo {
-
-    /**
-     * Construtor padrão do Milho. Define o item produzido e nome.
-     */
     public Milho() {
-        super(false, false, new sementeMilho(), "Milho", 5);
+        super(false, false, new sementeMilho(), "Milho", 5, 7);
     }
 
-    /**
-     * Coleta o produto da planta e adiciona ao inventário.
-     * Libera um lote após a colheita.
-     *
-     * @param inventario o inventário do jogador
-     * @param LotesDisponiveis controle de lotes disponíveis
-     */
-    public void coletar(Inventario inventario, Lotes LotesDisponiveis) {
-            inventario.adicionar(this.getItemProduzido(), getQuantidadeProducao());
-        LotesDisponiveis.setQuantidadeDisponivel(LotesDisponiveis.getQuantidadeDisponivel() + 1);
+    public TipoLote getTipo(){
+        return TipoLote.MILHO;
     }
 
-    /**
-     * Compra a semente associada, se houver saldo suficiente.
-     */
-    public void comprar(Dinheiro dinheiro, Inventario inventario) {
-        if (dinheiro.getValor() >= this.getItemProduzido().getPreco()) {
-            dinheiro.setValor(dinheiro.getValor() - this.getItemProduzido().getPreco());
-            inventario.adicionar(this.getItemProduzido(), 1);
-        } else {
-            System.out.println("Dinheiro insuficiente, trabalhe mais... ou venda um rim!");
+    public void coletar(Inventario inventario, Lotes lotes) {
+        if (!lotes.temDisponivel(this.getTipo())) {
+            System.out.println("Não há " + this.getNome() + " plantado");
+            return;
         }
+
+        int index = this.getTipo().ordinal();
+        ArrayList<Ativo> lista = lotes.getLotes()[index];
+
+        for (int i = 0; i < lista.size(); i++) {
+            Ativo ativo = lista.get(i);
+            if (ativo instanceof Milho milho && milho.isEstado()) {
+                inventario.adicionar(milho.getItemProduzido(), milho.getQuantidadeProducao());
+                lista.remove(i);
+                System.out.println(milho.getNome() + " colhido com sucesso!");
+                return;
+            }
+        }
+        System.out.println(this.getNome() + " ainda não está pronto para colheita");
     }
 
-    /**
-     * Vende a semente associada, se estiver no inventário.
-     */
-    public void vender(Dinheiro dinheiro, Inventario inventario) {
-        dinheiro.setValor(dinheiro.getValor() + this.getItemProduzido().getPreco());
-        inventario.remover(this.getItemProduzido(), 1);
+    public boolean prontoParaColeta() {
+        return this.getDiasParaProduzir() <= 0;
+    }
+
+    @Override
+    public void plantar(Lotes lotes, Inventario inventario) {
+        if(lotes.estaCheio()){
+            System.out.println("Não há lotes disponíveis.");
+            return;
+        }
+        if(inventario.remover(this.getItemProduzido(), 1)){
+            Ativo ativo = new Milho();
+            lotes.adicionar(ativo);
+            System.out.println(this.getItemProduzido().getNome() + " plantado com sucesso.");
+        }
     }
 }
