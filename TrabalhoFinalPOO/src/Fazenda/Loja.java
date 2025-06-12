@@ -21,12 +21,12 @@ public class Loja {
     }
 
     public void Inicializar() {
-        itens.put(new filhoteOvelha(), 1);
-        itens.put(new filhoteGalinha(), 1);
-        itens.put(new filhoteVaca(), 1);
-        itens.put(new sementeSoja(), 1);
-        itens.put(new sementeMilho(), 1);
-        itens.put(new sementeTrigo(), 1);
+        itens.put(new FilhoteOvelha(), 1);
+        itens.put(new FilhoteGalinha(), 1);
+        itens.put(new FilhoteVaca(), 1);
+        itens.put(new SementeSoja(), 1);
+        itens.put(new SementeMilho(), 1);
+        itens.put(new SementeTrigo(), 1);
         itens.put(new La(), 1);
         itens.put(new Leite(), 1);
         itens.put(new Ovo(), 1);

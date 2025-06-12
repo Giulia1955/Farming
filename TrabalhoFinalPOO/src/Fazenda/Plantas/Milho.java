@@ -1,13 +1,13 @@
 package Fazenda.Plantas;
 
 import Fazenda.*;
-import Fazenda.Itens.sementeMilho;
+import Fazenda.Itens.SementeMilho;
 
 import java.util.ArrayList;
 
 public class Milho extends Planta implements Ativo {
     public Milho() {
-        super(false, false, new sementeMilho(), "Milho", 5, 7);
+        super(false, false, new SementeMilho(), "Milho", 5, 7);
     }
 
     public TipoLote getTipo(){

@@ -1,15 +1,14 @@
 package Fazenda.Animais;
 import Fazenda.*;
-import Fazenda.Itens.filhoteGalinha;
-import Fazenda.Itens.sementeMilho;
+import Fazenda.Itens.FilhoteGalinha;
+import Fazenda.Itens.SementeMilho;
 import Fazenda.Itens.Ovo;
-import Fazenda.Plantas.Milho;
 
 import java.util.ArrayList;
 
 public class Galinha extends Animal implements Ativo{
     public Galinha() {
-        super("Galinha", new Ovo(), false, 10, new sementeMilho(), 1, 3, 1, new filhoteGalinha());
+        super("Galinha", new Ovo(), false, 10, new SementeMilho(), 1, 3, 1, new FilhoteGalinha());
     }
 
     public TipoLote getTipo(){

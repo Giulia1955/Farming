@@ -1,15 +1,14 @@
 package Fazenda.Animais;
 import Fazenda.*;
-import Fazenda.Itens.Item;
 import Fazenda.Itens.La;
-import Fazenda.Itens.filhoteOvelha;
-import Fazenda.Itens.sementeTrigo;
+import Fazenda.Itens.FilhoteOvelha;
+import Fazenda.Itens.SementeTrigo;
 
 import java.util.ArrayList;
 
 public class Ovelha extends Animal implements Ativo{
     public Ovelha() {
-        super("Ovelha", new La(), false, 15, new sementeTrigo(), 2, 5, 5, new filhoteOvelha());
+        super("Ovelha", new La(), false, 15, new SementeTrigo(), 2, 5, 5, new FilhoteOvelha());
     }
 
     public TipoLote getTipo(){

@@ -1,15 +1,4 @@
 package Fazenda;
-import Fazenda.Itens.Item;
-import Fazenda.Itens.sementeSoja;
-import Fazenda.Plantas.Milho;
-import Fazenda.Plantas.Planta;
-import Fazenda.Plantas.Soja;
-import Fazenda.Produto;
-import Fazenda.Lotes;
-import Fazenda.Inventario;
-import Fazenda.EventoRandomico;
-import Fazenda.Dinheiro;
-import Fazenda.Ativo;
 import java.util.*;
 
 
@@ -19,16 +8,20 @@ public class AppFazenda {
         Lotes lotes = new Lotes();
         Scanner scanner = new Scanner(System.in);
         Loja loja = new Loja();
+        Controle controle = new Controle();
+        Arquivo arquivo = new Arquivo();
 
-        System.out.println("Bem vindo à sua fazenda! Por quantos dias você irá jogar?");
-        int dias = scanner.nextInt();
+        if(!arquivo.carregar()){
 
-        EventosDiarios eventosDiarios = new EventosDiarios(dias);
-
-        for (int i = 1; i <= dias; i++){
-            //
         }
 
-
+        while(controle.isJogoAcontecendo()){
+            controle.atualizarDados(lotes, loja);
+            controle.exibirResumoDiario(inventario, lotes, loja);
+            while(!controle.isPulouDia()){
+                controle.exibirEscolhas();
+                controle.tratarEscolha(scanner, inventario, lotes, loja);
+            }
+        }
     }
 }
