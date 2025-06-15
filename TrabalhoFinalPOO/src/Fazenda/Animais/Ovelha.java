@@ -1,14 +1,15 @@
 package Fazenda.Animais;
 import Fazenda.*;
 import Fazenda.Itens.La;
-import Fazenda.Itens.FilhoteOvelha;
-import Fazenda.Itens.SementeTrigo;
+import Fazenda.Itens.filhoteOvelha;
+import Fazenda.Itens.sementeTrigo;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 
 public class Ovelha extends Animal implements Ativo{
     public Ovelha() {
-        super("Ovelha", new La(), false, 15, new SementeTrigo(), 2, 5, 5, new FilhoteOvelha());
+        super("Ovelha", new La(), false, 15, new sementeTrigo(), 2, 5, 5, new filhoteOvelha());
     }
 
     public TipoLote getTipo(){
@@ -74,5 +75,19 @@ public class Ovelha extends Animal implements Ativo{
             System.out.println(this.getFilhote().getNome() + " colocado com sucesso, agora ele ja pode produzir!");
         }
 
+    }
+
+    @Override
+    public void morrer(Lotes lotes) {
+        int index = this.getTipo().ordinal();
+        ArrayList<Ativo> lista = lotes.getLotes()[index];
+
+        lista.removeIf(ativo -> {
+            if (ativo instanceof Ovelha ovelha && ovelha.getVida() == 0) {
+                System.out.println("Uma ovelha morreu");
+                return true;
+            }
+            return false;
+        });
     }
 }

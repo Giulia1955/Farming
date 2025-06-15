@@ -1,12 +1,14 @@
 package Fazenda;
 
 import Fazenda.Itens.*;
+import java.util.*;
 
 public class EventoRandomico {
-    public EventoRandomico() {}
+    Random random = new Random();
 
-    public void executarEvento(int ValorRand, Dinheiro dinheiro, Inventario inventario) {
-        switch (ValorRand) {
+    public void executarEvento(Dinheiro dinheiro, Inventario inventario) {
+        int numAleatorio = random.nextInt(20);
+        switch (numAleatorio) {
             case 0: VacaPrenha(inventario); break;
             case 1: OvelhaPrenha(inventario); break;
             case 2: GalinhaChoca(inventario); break;
@@ -19,17 +21,17 @@ public class EventoRandomico {
 
     public void VacaPrenha(Inventario inventario) {
         System.out.println("Há uma vaca prenha! Reserve espaço para o novo membro da fazenda!");
-        inventario.adicionar(new FilhoteVaca(), 1);
+        inventario.adicionar(new filhoteVaca(), 1);
     }
 
     public void OvelhaPrenha(Inventario inventario) {
         System.out.println("Há uma ovelha prenha! Reserve espaço para o novo membro da fazenda!");
-        inventario.adicionar(new FilhoteOvelha(), 1);
+        inventario.adicionar(new filhoteOvelha(), 1);
     }
 
     public void GalinhaChoca(Inventario inventario) {
         System.out.println("Há uma galinha chocando! Reserve espaço para o novo membro da fazenda!");
-        inventario.adicionar(new FilhoteGalinha(), 1);
+        inventario.adicionar(new filhoteGalinha(), 1);
     }
 
     public void Emprestimo(Dinheiro dinheiro) {
@@ -39,15 +41,15 @@ public class EventoRandomico {
 
     public void EncontrouSoja(Inventario inventario){
         System.out.println("Ao limpar o celeiro, você encontrou um pacote esquecido de soja.");
-        inventario.adicionar(new SementeSoja(), 3);
+        inventario.adicionar(new sementeSoja(), 3);
     }
 
     public void EncontrouTrigo(Inventario inventario){
         System.out.println("Você encontrou um pacote de sementes de trigo no fundo da gaveta.");
-        inventario.adicionar(new SementeTrigo(), 3);
+        inventario.adicionar(new sementeTrigo(), 3);
     }
     public void EncontrouMilho(Inventario inventario){
         System.out.println("Sua vizinha lhe deu um pacote de milho em troca de mudas de hortelã.");
-        inventario.adicionar(new SementeMilho(), 3);
+        inventario.adicionar(new sementeMilho(), 3);
     }
 }

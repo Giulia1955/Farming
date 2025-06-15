@@ -1,17 +1,27 @@
 package Fazenda.Plantas;
 
 import Fazenda.*;
-import Fazenda.Itens.SementeMilho;
+import Fazenda.Itens.sementeMilho;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 
 public class Milho extends Planta implements Ativo {
     public Milho() {
-        super(false, false, new SementeMilho(), "Milho", 5, 7);
+        super(false, false, new sementeMilho(), "Milho", 5, 7);
     }
 
     public TipoLote getTipo(){
         return TipoLote.MILHO;
+    }
+
+    @Override
+    public int getDiasParaProduzir() {
+        return super.getDiasParaProduzir();
+    }
+    @Override
+    public void setDiasParaProduzir(int diasParaProduzir) {
+        super.setDiasParaProduzir(diasParaProduzir);
     }
 
     public void coletar(Inventario inventario, Lotes lotes) {

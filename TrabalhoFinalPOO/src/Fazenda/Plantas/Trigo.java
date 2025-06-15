@@ -1,13 +1,14 @@
 package Fazenda.Plantas;
 
 import Fazenda.*;
-import Fazenda.Itens.SementeTrigo;
+import Fazenda.Itens.sementeTrigo;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 
 public class Trigo extends Planta implements Ativo {
     public Trigo() {
-        super(false, false, new SementeTrigo(), "Trigo", 3, 10);
+        super(false, false, new sementeTrigo(), "Trigo", 3, 10);
     }
 
     public TipoLote getTipo(){

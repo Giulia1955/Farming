@@ -2,8 +2,9 @@ package Fazenda.Animais;
 import Fazenda.Itens.Item;
 import Fazenda.Inventario;
 import Fazenda.Lotes;
+import java.io.Serializable;
 
-public abstract class Animal {
+public abstract class Animal implements Serializable {
     private Item itemProduzido, comida, filhote;
     private boolean fome;
     private int vida;
@@ -97,4 +98,6 @@ public abstract class Animal {
     public abstract void alimentar(Inventario inventario, Lotes lotes);
 
     public abstract void colocar(Inventario inventario, Lotes lotes);
+
+    public abstract void morrer(Lotes lotes);
 }

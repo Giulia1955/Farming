@@ -2,9 +2,11 @@ package Fazenda;
 
 import Fazenda.Itens.Item;
 import java.util.*;
+import java.io.Serializable;
 
 
-public class Inventario {
+public class Inventario implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Map<Item, Integer> itens;
 

@@ -1,5 +1,9 @@
 package Fazenda;
-public class Dinheiro {
+import java.io.Serializable;
+
+public class Dinheiro  implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private double valor;
     public Dinheiro() {
         valor = 50.0;

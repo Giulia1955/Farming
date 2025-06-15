@@ -1,6 +1,8 @@
 package Fazenda.Itens;
 
-public abstract class Item {
+import java.io.Serializable;
+
+public abstract class Item implements Serializable {
     private double preco;
     private String descricao, nome;
 

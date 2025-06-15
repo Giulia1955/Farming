@@ -9,11 +9,9 @@ public class AppFazenda {
         Scanner scanner = new Scanner(System.in);
         Loja loja = new Loja();
         Controle controle = new Controle();
-        Arquivo arquivo = new Arquivo();
+        Dinheiro dinheiro = new Dinheiro();
+        EstadoJogo estado = new EstadoJogo(inventario,dinheiro,lotes);
 
-        if(!arquivo.carregar()){
-
-        }
 
         while(controle.isJogoAcontecendo()){
             controle.atualizarDados(lotes, loja);

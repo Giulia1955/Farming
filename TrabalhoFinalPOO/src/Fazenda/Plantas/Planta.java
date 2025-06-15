@@ -3,6 +3,7 @@ package Fazenda.Plantas;
 import Fazenda.Itens.Item;
 import Fazenda.Inventario;
 import Fazenda.Lotes;
+import java.io.Serializable;
 
 public abstract class Planta {
     private boolean sede, estado;
