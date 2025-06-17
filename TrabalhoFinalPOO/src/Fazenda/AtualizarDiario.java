@@ -11,8 +11,7 @@ import Fazenda.PlantaEAnimal.ReduzirContadores;
 import java.util.Arrays;
 
 public class AtualizarDiario {
-    public void atualizarDados(Lotes lotes, Loja loja, Dinheiro dinheiro, Inventario inventario){
-        Controle controle = new Controle();
+    public void atualizarDados(Lotes lotes, Loja loja, Dinheiro dinheiro, Inventario inventario, Controle controle){
         loja.Inicializar();
         controle.setPulouDia(false);
         ReduzirContadores reduzirContadores = new ReduzirContadores();

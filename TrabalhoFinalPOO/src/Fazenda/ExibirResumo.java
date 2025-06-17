@@ -5,8 +5,7 @@ import Fazenda.Informacoes.Inventario;
 import Fazenda.Informacoes.Lotes;
 
 public class ExibirResumo {
-    Controle controle = new Controle();
-    public void exibirResumoDiario(Inventario inventario, Lotes lotes, Loja loja, Dinheiro dinheiro, EventoRandomico evento) {
+    public void exibirResumoDiario(Inventario inventario, Lotes lotes, Loja loja, Dinheiro dinheiro, EventoRandomico evento, Controle controle) {
         String borda = "═".repeat(70);
         System.out.println();
         System.out.println("╔" + borda + "╗");

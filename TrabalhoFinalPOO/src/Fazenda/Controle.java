@@ -1,5 +1,6 @@
 package Fazenda;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Fazenda.Informacoes.TipoLote;
@@ -8,6 +9,12 @@ import Fazenda.Arquivo.EstadoJogo;
 import Fazenda.Informacoes.Dinheiro;
 import Fazenda.Informacoes.Inventario;
 import Fazenda.Informacoes.Lotes;
+import Fazenda.PlantaEAnimal.Animais.Alimentar;
+import Fazenda.PlantaEAnimal.Animais.Coletar;
+import Fazenda.PlantaEAnimal.Animais.ColocarAnimalLote;
+import Fazenda.PlantaEAnimal.Plantas.Colher;
+import Fazenda.PlantaEAnimal.Plantas.Plantar;
+import Fazenda.PlantaEAnimal.Plantas.Regar;
 
 
 public class Controle {
@@ -74,10 +81,10 @@ public class Controle {
         }
         while(this.isJogoAcontecendo()){
             EventoRandomico evento = new EventoRandomico();
-            atualizar.atualizarDados(lotes, loja, dinheiro, inventario);
-            resumo.exibirResumoDiario(inventario, lotes, loja, dinheiro, evento);
+            atualizar.atualizarDados(lotes, loja, dinheiro, inventario,this);
+            resumo.exibirResumoDiario(inventario, lotes, loja, dinheiro, evento,this);
             while(!this.isPulouDia()){
-                escolhas.exibirEscolhas(scanner, loja, lotes, inventario, dinheiro, this);
+                escolhas.exibirEscolhas(scanner, loja, lotes, inventario, dinheiro,this);
             }
             Arquivo arquivo = new Arquivo();
             arquivo.perguntarSalvar(inventario,dinheiro,lotes,this,scanner, dias);
@@ -85,5 +92,4 @@ public class Controle {
         }
         scanner.close();
     }
-
 }
