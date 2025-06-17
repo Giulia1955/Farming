@@ -1,11 +1,11 @@
 
 🌱 Fazendinha Bus Farm - Simulação de Fazenda 🐄🌾
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 📖 Descrição
 Fazendinha é um projeto de simulação de fazenda onde o jogador pode plantar, colher, criar animais e gerenciar os recursos da propriedade rural.
 O objetivo é administrar os recursos da fazenda de forma eficiente, cultivando diferentes tipos de plantações, cuidando dos animais e vendendo produtos para lucrar e expandir a propriedade.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 🚀 Funcionalidades principais
 📋 Inventário de Itens
  Controle de sementes, produtos colhidos, animais, lotes, dinheiro e outros recursos.
@@ -25,7 +25,7 @@ O objetivo é administrar os recursos da fazenda de forma eficiente, cultivando 
 🎲 Eventos Aleatórios
  Eventos inesperados como nascimento de animais ou bônus de dinheiro.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🛠️ Tecnologias utilizadas
 Linguagem: Java 
@@ -36,7 +36,7 @@ Estruturas de Dados:  Mapas e vetores
 
 IDE: IntelliJ IDEA 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 📥 Instalação e execução
 Clone o repositório:
@@ -48,11 +48,11 @@ javac TrabalhoFinalPOO/*.java
 Execute o programa:
 java Fazenda.Main
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
 📌 Estrutura de Pastas
 TrabalhoFinalPOO/
-├── out/                          → Arquivos compilados (.class)
+├── out/                          → Arquivos compilados
 │   └── production/TrabalhoFinalPOO/Fazenda/
 │       ├── Animais/              → Classes compiladas dos animais (Galinha, Ovelha, Vaca)
 │       ├── Itens/                → Itens como ovos, leite, lã, sementes e filhotes
@@ -83,7 +83,7 @@ TrabalhoFinalPOO/
 ├── TrabalhoFinalPOO.iml          → Arquivo de configuração do IntelliJ IDEA
 └── Versao2.0.iml                 → Versão alternativa de configuração do projeto
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ✅ Conceitos Aplicados
 O projeto utiliza diversos conceitos da Programação Orientada a Objetos (POO), incluindo:
@@ -97,14 +97,14 @@ O projeto utiliza diversos conceitos da Programação Orientada a Objetos (POO),
 - Tratamento de Exceções: Várias classes que implementam detecções de erros com o try/catch.
 - Uso do javadoc: implementação das descrições dos funcionamentos de cada classe.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🎨 Detalhamento Item Criativo
 A cada dia dentro do jogo, eventos aleatórios podem ocorrer, como animais prenhes, sementes perdidas e empréstimos inesperados. Esses eventos são implementados através da classe EventoRandomico, que é responsável por sortear e aplicar os efeitos dos eventos aleatórios.
 	Além disso, é feito um controle de todos os acontecimentos da fazenda, como o tempo de produção de todos os ativos, tempo de vida dos animais, a vida dos ativos dependerem dos cuidados do usuário, entre outras funcionalidades.
 O objetivo das classes de Controle e EventoRandomico é deixar o jogo mais dinâmico e imprevisível, criando desafios e oportunidades que exigem do jogador planejamento e tomada de decisão e evitar que o jogo se torne monótono e repetitivo.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 📈Sugestões de Melhorias
 -Expansão do uso de itens criados, para utilização de novos itens (exemplo: usar lã para fazer casacos, leite para fazer queijo);
@@ -115,7 +115,7 @@ O objetivo das classes de Controle e EventoRandomico é deixar o jogo mais dinâ
 
 -Clima dinâmico que afete o funcionamento dos ativos e eventos da fazenda.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ✨ Autores
 
@@ -133,4 +133,4 @@ Nome: Guilherme Roberto Nedochetko
 Contato: guilhermenedochetko@gmail.com
 GitHub:https://github.com/Flobster23
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
