@@ -51,37 +51,69 @@ java Fazenda.Main
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 📌 Estrutura de Pastas
+
 TrabalhoFinalPOO/
+
 ├── out/                          → Arquivos compilados
+
 │   └── production/TrabalhoFinalPOO/Fazenda/
+
 │       ├── Animais/              → Classes compiladas dos animais (Galinha, Ovelha, Vaca)
+
 │       ├── Itens/                → Itens como ovos, leite, lã, sementes e filhotes
+
 │       ├── Plantas/              → Plantas cultiváveis (Milho, Soja, Trigo)
+
 │       ├── AppFazenda.class      → Classe principal compilada
+
 │       ├── Controle.class        → Controle de fluxo do jogo
+
 │       ├── EventoRandomico.class → Eventos inesperados na fazenda
+
 │       └── Outros arquivos .class relacionados
+
 ├── src/                          → Código-fonte (.java)
+
 │   └── Fazenda/
+
 │       ├── Animais/              → Código fonte dos animais
+
 │       ├── Itens/                → Código fonte dos itens
+
 │       ├── Plantas/              → Código fonte das plantas
+
 │       ├── Arquivo.java          → Manipulação de arquivos
+
 │       ├── Ativo.java            → Interface/base de ativos
+
 │       ├── AppFazenda.java       → Classe principal (Main)
+
 │       ├── Controle.java         → Controle das interações
+
 │       ├── EventoRandomico.java  → Classe para gerar eventos aleatórios
+
 │       ├── Inventario.java       → Gestão de inventário
+
 │       ├── Loja.java             → Sistema de loja
+
 │       ├── Lotes.java            → Controle de lotes
+
 │       ├── Produto.java          → Definição dos produtos
+
 │       ├── TipoLote.java         → Enum ou classe com tipos de lotes
+
 │       ├── AtualizarDiario.java  → Registro de ações no diário
+
 │       ├── CartaIntroducao.java  → Introdução narrativa ao jogo
+
 │       ├── Escolhas.java         → Classe com as escolhas de ações
+
 │       └── ExibirResumo.java     → Exibição de resumo das atividades
+
 ├── TrabalhoFinalPOO.iml          → Arquivo de configuração do IntelliJ IDEA
+
 └── Versao2.0.iml                 → Versão alternativa de configuração do projeto
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -100,8 +132,10 @@ O projeto utiliza diversos conceitos da Programação Orientada a Objetos (POO),
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🎨 Detalhamento Item Criativo
-A cada dia dentro do jogo, eventos aleatórios podem ocorrer, como animais prenhes, sementes perdidas e empréstimos inesperados. Esses eventos são implementados através da classe EventoRandomico, que é responsável por sortear e aplicar os efeitos dos eventos aleatórios.
-	Além disso, é feito um controle de todos os acontecimentos da fazenda, como o tempo de produção de todos os ativos, tempo de vida dos animais, a vida dos ativos dependerem dos cuidados do usuário, entre outras funcionalidades.
+
+-A cada dia dentro do jogo, eventos aleatórios podem ocorrer, como animais prenhes, sementes perdidas e empréstimos inesperados. Esses eventos são implementados através da classe EventoRandomico, que é responsável por sortear e aplicar os efeitos dos eventos aleatórios.
+
+-Além disso, é feito um controle de todos os acontecimentos da fazenda, como o tempo de produção de todos os ativos, tempo de vida dos animais, a vida dos ativos dependerem dos cuidados do usuário, entre outras funcionalidades.
 O objetivo das classes de Controle e EventoRandomico é deixar o jogo mais dinâmico e imprevisível, criando desafios e oportunidades que exigem do jogador planejamento e tomada de decisão e evitar que o jogo se torne monótono e repetitivo.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,17 +154,23 @@ O objetivo das classes de Controle e EventoRandomico é deixar o jogo mais dinâ
 ✨ Autores
 
 Nome: Giulia Mezaroba
+
 Contato: giuliamezaroba@gmail.com
+
 GitHub: https://github.com/Giulia1955
 
 
 Nome: Eduardo Barbero Bizzi Rodrigues
+
 Contato: eduardobizzi10@gmail.com
+
 GitHub: https://github.com/EduardoBizzi
 
 
 Nome: Guilherme Roberto Nedochetko
+
 Contato: guilhermenedochetko@gmail.com
+
 GitHub:https://github.com/Flobster23
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
